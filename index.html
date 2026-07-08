@@ -15,73 +15,37 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:#111827;font-size:14px;line-height:1.5}
 .wrap{max-width:1280px;margin:0 auto;padding:20px}
-
-/* ── HEADER ── */
 .hdr{background:var(--header);color:#fff;padding:20px 28px;border-radius:var(--radius);margin-bottom:var(--gap);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .hdr h1{font-size:20px;font-weight:700}
 .hdr .sub{font-size:13px;opacity:.75;margin-top:3px}
 .hdr-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 14px;font-size:13px;font-weight:600}
-
-/* ── TABS ── */
 .tabs{display:flex;gap:4px;margin-bottom:var(--gap);background:#e5e7eb;padding:4px;border-radius:12px;width:fit-content}
 .tab{padding:10px 24px;border-radius:9px;border:none;background:transparent;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;transition:all .2s}
 .tab.active{background:#fff;color:var(--header);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 .tab:hover:not(.active){background:rgba(255,255,255,.6);color:#374151}
-
-/* ── PANELS ── */
 .panel{display:none}
 .panel.active{display:block}
-
-/* ── SECTION LABEL ── */
 .sec{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gray);margin:16px 0 10px}
-
-/* ── KPI ROW ── */
 .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
 .kpi{background:var(--card);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);border-left:4px solid #e5e7eb}
 .kpi.bl{border-left-color:var(--blue)} .kpi.gr{border-left-color:var(--green)}
 .kpi.rd{border-left-color:var(--red)}  .kpi.or{border-left-color:var(--orange)}
-.kpi.pu{border-left-color:var(--purple)} .kpi.gy{border-left-color:var(--gray)}
 .kpi-lbl{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px}
 .kpi-val{font-size:26px;font-weight:800;line-height:1.1}
 .kpi-note{font-size:12px;color:var(--gray);margin-top:4px}
-.kpi-note.rd{color:var(--red);font-weight:600} .kpi-note.gr{color:var(--green);font-weight:600} .kpi-note.or{color:var(--orange);font-weight:600}
-
-/* ── GRIDS ── */
+.kpi-note.rd{color:var(--red);font-weight:600} .kpi-note.gr{color:var(--green);font-weight:600}
 .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--gap);margin-bottom:var(--gap)}
-
-/* ── CHART BOX ── */
 .cb{background:var(--card);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
 .cb h3{font-size:14px;font-weight:700;margin-bottom:3px}
 .cb p{font-size:12px;color:var(--gray);margin-bottom:14px}
 .cb canvas{max-height:270px}
-
-/* ── TABLE BOX ── */
-.tb{background:var(--card);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin-bottom:var(--gap);overflow-x:auto}
-.tb h3{font-size:14px;font-weight:700;margin-bottom:3px}
-.tb p{font-size:12px;color:var(--gray);margin-bottom:14px}
-table{width:100%;border-collapse:collapse;font-size:13px}
-thead th{text-align:left;padding:9px 12px;border-bottom:2px solid #e5e7eb;color:var(--gray);font-size:11px;font-weight:700;text-transform:uppercase;white-space:nowrap}
-tbody td{padding:8px 12px;border-bottom:1px solid #f3f4f6}
-tbody tr:last-child td{border-bottom:none}
-tbody tr:hover{background:#f9fafb}
-
-/* ── PILLS ── */
-.pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
-.p-red{background:#fef2f2;color:#dc2626} .p-orange{background:#fff7ed;color:#d97706}
-.p-yellow{background:#fefce8;color:#ca8a04} .p-blue{background:#eff6ff;color:#2563eb}
-.p-green{background:#f0fdf4;color:#16a34a} .p-purple{background:#f5f3ff;color:#7c3aed}
-.p-gray{background:#f9fafb;color:#6b7280}
-
-/* ── ALERT ── */
-.alert{background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius);padding:12px 18px;margin-bottom:var(--gap);font-size:13px;color:#dc2626;font-weight:600}
-
-/* ── FOOTER ── */
+.notion-embed{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.notion-embed iframe{width:100%;height:1400px;border:none;display:block}
+.notion-embed .hint{padding:12px 18px;font-size:12px;color:var(--gray);border-top:1px solid #f3f4f6}
 footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding:10px}
-
 @media(max-width:768px){
   .kpi-row{grid-template-columns:repeat(2,1fr)}
-  .g2,.g3{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
   .tabs{width:100%} .tab{flex:1;padding:10px 10px;font-size:12px}
 }
 </style>
@@ -89,353 +53,85 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
 <body>
 <div class="wrap">
 
-<!-- HEADER -->
 <header class="hdr">
   <div>
     <h1>🏘 Condominio Barrio Oriente I</h1>
     <div class="sub">Administración: Ingrid Molgas &nbsp;|&nbsp; Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</div>
   </div>
-  <div class="hdr-badge">📅 Mayo 2026</div>
+  <div class="hdr-badge">📅 Junio 2026</div>
 </header>
 
-<!-- TABS -->
 <div class="tabs">
   <button class="tab active" onclick="switchTab('financiero',this)">💰 Informe Financiero</button>
   <button class="tab" onclick="switchTab('tareas',this)">📋 Tareas y Acuerdos</button>
 </div>
 
-<!-- ══════════════════════════════════════════════════════════
-     TAB 1 — FINANCIERO
-══════════════════════════════════════════════════════════ -->
 <div id="panel-financiero" class="panel active">
 
-  <div class="sec">📊 Resumen Financiero — Mayo 2026</div>
+  <div class="sec">📊 Resumen Financiero — Junio 2026</div>
   <div class="kpi-row">
-    <div class="kpi bl"><div class="kpi-lbl">Ingresos Recaudados</div><div class="kpi-val">$6.788.352</div><div class="kpi-note">GGCC + Fondo Reserva + Extra</div></div>
-    <div class="kpi rd"><div class="kpi-lbl">Total Egresos</div><div class="kpi-val">$8.608.519</div><div class="kpi-note rd">+$130.729 sobre presupuesto</div></div>
-    <div class="kpi or"><div class="kpi-lbl">Saldo Banco</div><div class="kpi-val">$1.313.393</div><div class="kpi-note">Scotiabank al 29/05/2026</div></div>
-    <div class="kpi rd"><div class="kpi-lbl">Morosidad Total</div><div class="kpi-val">$2.196.820</div><div class="kpi-note rd">26% del total cobrado</div></div>
-    <div class="kpi gr"><div class="kpi-lbl">Fondo de Reserva</div><div class="kpi-val">$961.659</div><div class="kpi-note gr">Capital: $7.829.234</div></div>
-    <div class="kpi gy"><div class="kpi-lbl">Unidades Morosas</div><div class="kpi-val">14</div><div class="kpi-note">3 con corte suministro (≥3 m.)</div></div>
+    <div class="kpi bl"><div class="kpi-lbl">Ingresos Recaudados</div><div class="kpi-val">$10.396.309</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
+    <div class="kpi rd"><div class="kpi-lbl">Total Egresos</div><div class="kpi-val">$6.822.289</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
+    <div class="kpi or"><div class="kpi-lbl">Saldo Banco</div><div class="kpi-val">$4.887.413</div><div class="kpi-note">Saldo bancario al cierre del mes</div></div>
+    <div class="kpi gr"><div class="kpi-lbl">Resultado del Mes</div><div class="kpi-val">$3.574.020</div><div class="kpi-note gr">Superávit del mes</div></div>
   </div>
 
   <div class="sec">💰 Análisis de Egresos</div>
   <div class="g2">
-    <div class="cb"><h3>Egresos por Categoría — Mayo 2026</h3><p>Distribución del gasto según boleta de GGCC ($8.477.077)</p><canvas id="f-egr-cat"></canvas></div>
-    <div class="cb"><h3>Ingresos vs Egresos — Nov 2025 a Mayo 2026</h3><p>Evolución mensual presupuestada vs real</p><canvas id="f-ing-egr" style="max-height:300px"></canvas></div>
+    <div class="cb"><h3>Egresos por Categoría — Junio 2026</h3><p>Distribución del gasto del mes ($6.822.289)</p><canvas id="f-egr-cat"></canvas></div>
+    <div class="cb"><h3>Ingresos vs Egresos — Histórico</h3><p>Evolución mensual real (cartola bancaria)</p><canvas id="f-ing-egr" style="max-height:300px"></canvas></div>
   </div>
   <div class="g2">
-    <div class="cb"><h3>Presupuesto vs Real por Categoría</h3><p>Variación acumulada Nov 2025–Mayo 2026</p><canvas id="f-ppt-real"></canvas></div>
     <div class="cb"><h3>Saldo Mensual</h3><p>Resultado real mes a mes (Ingresos − Egresos)</p><canvas id="f-saldo"></canvas></div>
-  </div>
-
-  <div class="sec">⚠️ Morosidad al 29/05/2026</div>
-  <div class="g2">
-    <div class="cb"><h3>Deuda por Tramo de Antigüedad</h3><p>Monto total adeudado por tramo</p><canvas id="f-mor-monto"></canvas></div>
-    <div class="cb"><h3>Unidades Morosas por Tramo</h3><p>Cantidad de unidades por nivel de morosidad</p><canvas id="f-mor-uni"></canvas></div>
-  </div>
-
-  <div class="tb">
-    <h3>📋 Detalle de Unidades Morosas</h3>
-    <p>Al 29 de mayo 2026. Unidades con 3+ meses tienen corte de suministro eléctrico.</p>
-    <table><thead><tr><th>Unidad</th><th>Meses mora</th><th>Deuda vencida</th><th>Corte suministro</th><th>Estado</th></tr></thead>
-    <tbody id="t-morosos"></tbody></table>
-  </div>
-
-  <div class="sec">📥 Recaudación y Balance</div>
-  <div class="g2">
-    <div class="cb"><h3>Composición de Ingresos Acumulada</h3><p>GGCC vs Fondo Reserva vs Fondo Extra (Nov 2025–Mayo 2026)</p><canvas id="f-comp-ing"></canvas></div>
-    <div class="cb"><h3>Balance General al 29/05/2026</h3><p>Activos, Pasivos y Patrimonio del condominio</p><canvas id="f-balance"></canvas></div>
   </div>
 
 </div><!-- /panel-financiero -->
 
-<!-- ══════════════════════════════════════════════════════════
-     TAB 2 — TAREAS
-══════════════════════════════════════════════════════════ -->
 <div id="panel-tareas" class="panel">
-
-  <div class="alert">⚠️ 25 tareas tienen fecha de vencimiento vencida y aún no están cerradas. Requieren atención inmediata.</div>
-
-  <div class="sec">📊 Resumen General de Tareas</div>
-  <div class="kpi-row">
-    <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">41</div><div class="kpi-note">En base de datos Notion</div></div>
-    <div class="kpi or"><div class="kpi-lbl">Tareas Abiertas</div><div class="kpi-val">34</div><div class="kpi-note or">83% del total activo</div></div>
-    <div class="kpi gr"><div class="kpi-lbl">Tareas Cerradas</div><div class="kpi-val">7</div><div class="kpi-note gr">17% completadas</div></div>
-    <div class="kpi rd"><div class="kpi-lbl">Vencidas sin cerrar</div><div class="kpi-val">25</div><div class="kpi-note rd">Requieren acción urgente</div></div>
-    <div class="kpi pu"><div class="kpi-lbl">Prioridad Alta</div><div class="kpi-val">35</div><div class="kpi-note">85% son Alta prioridad</div></div>
-    <div class="kpi gy"><div class="kpi-lbl">Responsable principal</div><div class="kpi-val">Ingrid</div><div class="kpi-note">26 de 41 tareas (63%)</div></div>
+  <div class="notion-embed">
+    <iframe src="https://zenith-dawn-f07.notion.site/37f12135079f809e92b9e2e467d051fb?v=37f12135079f80488a17000c406a1a33&source=copy_link" loading="lazy"></iframe>
+    <div class="hint">Vista en vivo de la base de datos "Tareas y Acuerdos" en Notion — se actualiza automáticamente, sin depender de este dashboard.</div>
   </div>
-
-  <div class="sec">📈 Distribución de Tareas</div>
-  <div class="g2">
-    <div class="cb"><h3>Tareas por Estado</h3><p>Distribución de las 41 tareas según su estado actual en Notion</p><canvas id="t-estado"></canvas></div>
-    <div class="cb"><h3>Tareas por Área</h3><p>Cantidad de tareas por área de gestión del condominio</p><canvas id="t-area"></canvas></div>
-  </div>
-  <div class="g2">
-    <div class="cb"><h3>Carga por Responsable</h3><p>Número de tareas asignadas a cada responsable</p><canvas id="t-resp"></canvas></div>
-    <div class="cb"><h3>Prioridad y Origen</h3><p>Distribución por nivel de prioridad y fuente de origen</p><canvas id="t-prior"></canvas></div>
-  </div>
-  <div class="g3">
-    <div class="cb"><h3>Avance General</h3><p>Tareas cerradas vs abiertas</p><canvas id="t-avance"></canvas></div>
-    <div class="cb"><h3>Ingrid vs Equipo</h3><p>Concentración de responsabilidad</p><canvas id="t-ingrid"></canvas></div>
-    <div class="cb"><h3>Origen de Tareas</h3><p>Cómo se originaron las tareas</p><canvas id="t-origen"></canvas></div>
-  </div>
-
-  <div class="tb">
-    <h3>🚨 Tareas Críticas — Alta Prioridad sin Cerrar</h3>
-    <p>Ordenadas por área. Las marcadas con ⚠️ tienen fecha de vencimiento vencida.</p>
-    <table><thead><tr><th>Tarea</th><th>Estado</th><th>Área</th><th>Responsable</th><th>Vencimiento</th></tr></thead>
-    <tbody id="t-criticas"></tbody></table>
-  </div>
-
-  <div class="tb">
-    <h3>📅 Vencimientos — Junio 2026</h3>
-    <p>Tareas con fecha límite en junio 2026 que aún están abiertas.</p>
-    <table><thead><tr><th>Tarea</th><th>Estado</th><th>Responsable</th><th>Fecha límite</th></tr></thead>
-    <tbody id="t-venc"></tbody></table>
-  </div>
-
 </div><!-- /panel-tareas -->
 
-<footer>Dashboard Condominio Barrio Oriente I · Mayo 2026 · Administración: Ingrid Molgas · Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</footer>
+<footer>Dashboard Condominio Barrio Oriente I · Junio 2026 · Administración: Ingrid Molgas · Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</footer>
 </div><!-- /wrap -->
 
 <script>
-// ── TAB SWITCH ────────────────────────────────────────────
 function switchTab(name, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
   btn.classList.add('active');
-  // Inicializar gráficos del tab al mostrarlo por primera vez
-  if (name === 'tareas' && !window._tareasInit) { initTareas(); window._tareasInit = true; }
 }
 
-// ── PALETA ────────────────────────────────────────────────
-const C = {
-  blue:'#2563eb', green:'#16a34a', red:'#dc2626', orange:'#d97706',
-  purple:'#7c3aed', teal:'#0891b2', gray:'#9ca3af',
-  blueFill:'rgba(37,99,235,.12)', redFill:'rgba(220,38,38,.12)',
-};
+const C = {blue:'#2563eb', green:'#16a34a', red:'#dc2626', purple:'#7c3aed', gray:'#9ca3af',
+  blueFill:'rgba(37,99,235,.12)', redFill:'rgba(220,38,38,.12)'};
 const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
+const yMoney = {responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.parsed.y)}}},scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},x:{ticks:{font:{size:11}},grid:{display:false}}}};
 
-const noScale = {
-  responsive:true,
-  plugins:{
-    legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-    tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' tareas'}}
-  }
-};
-const hBar = {
-  indexAxis:'y', responsive:true,
-  plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.parsed.x+' tareas'}}},
-  scales:{
-    x:{ticks:{stepSize:1,font:{size:11}},grid:{color:'#f3f4f6'},beginAtZero:true},
-    y:{ticks:{font:{size:10}},grid:{display:false}}
-  }
-};
-const yMoney = {
-  responsive:true,
-  plugins:{
-    legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-    tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.parsed.y)}}
-  },
-  scales:{
-    y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},
-    x:{ticks:{font:{size:11}},grid:{display:false}}
-  }
-};
+new Chart('f-egr-cat',{type:'doughnut',data:{
+  labels:["A confirmar", "Administración", "Aseo", "Laboral", "Seguros", "Servicios básicos"],
+  datasets:[{data:[20000.0, 4731292.0, 145718.0, 1620940.0, 46489.0, 257850.0],backgroundColor:["#2563eb", "#0891b2", "#d97706", "#7c3aed", "#16a34a", "#6b7280"],hoverOffset:6,borderWidth:2}]
+},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
+  tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+fmt(ctx.parsed)+' ('+(ctx.parsed/6822289.0*100).toFixed(1)+'%)'}}}
+}});
 
-// ════════════════════════════════════════════════════════════
-// TAB FINANCIERO — inicializa al cargar
-// ════════════════════════════════════════════════════════════
-(function initFinanciero() {
+const mesesHist = ["Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26", "May 26", "Jun 26"];
+const ingHist = [8169881, 7883629, 8784204, 8247150, 8420928, 7278682, 6788352, 10396309];
+const egrHist = [7156068, 9811058, 10248988, 8418485, 8434769, 8597480, 8608519, 6822289];
 
-  // 1. Egresos por categoría
-  new Chart('f-egr-cat',{type:'doughnut',data:{
-    labels:['A: Administración','B: Mantención','C: Reparaciones','D: Uso y Consumo','E: Aseo','F: Otros Admin.'],
-    datasets:[{data:[6598520,190861,588000,750516,182768,166412],
-      backgroundColor:[C.blue,C.teal,C.orange,C.purple,C.green,C.gray],hoverOffset:6,borderWidth:2}]
-  },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-    tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+fmt(ctx.parsed)+' ('+(ctx.parsed/8477077*100).toFixed(1)+'%)'}}}
-  }});
+new Chart('f-ing-egr',{type:'bar',data:{labels:mesesHist,datasets:[
+  {label:'Ingresos Real', data:ingHist,backgroundColor:C.blue,borderRadius:4},
+  {label:'Egresos Real',  data:egrHist,backgroundColor:C.red,borderRadius:4},
+]},options:yMoney});
 
-  // 2. Ingresos vs Egresos mensual
-  const meses=['Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'];
-  new Chart('f-ing-egr',{type:'bar',data:{labels:meses,datasets:[
-    {label:'Ingresos Ppto.',data:[7247800,7247800,7247800,7247800,7501473,7247800,7247800],backgroundColor:C.blueFill,borderColor:C.blue,borderWidth:2,type:'line',tension:.3,pointRadius:4},
-    {label:'Ingresos Real', data:[8169881,7883629,8784204,8247150,8420928,7278682,6788352],backgroundColor:C.blue,borderRadius:4,order:2},
-    {label:'Egresos Ppto.', data:[9186361,9579472,8325246,8105246,7885246,8597480,8608519],backgroundColor:C.redFill,borderColor:C.red,borderWidth:2,type:'line',tension:.3,pointRadius:4},
-    {label:'Egresos Real',  data:[7156068,9811058,10248988,8418485,8434769,8597480,8608519],backgroundColor:C.red,borderRadius:4,order:3},
-  ]},options:yMoney});
-
-  // 3. Ppto vs Real categoría
-  new Chart('f-ppt-real',{type:'bar',data:{
-    labels:['Administración','Uso y Consumo','G. Extraordinarios'],
-    datasets:[
-      {label:'Presupuestado',data:[42483316,3708523,13246140],backgroundColor:C.blueFill,borderColor:C.blue,borderWidth:2,borderRadius:4},
-      {label:'Real',         data:[42402880,4707618,14164869],backgroundColor:C.orange,borderRadius:4},
-    ]
-  },options:{...yMoney,indexAxis:'y',scales:{
-    x:{ticks:{callback:v=>'$'+(v/1000000).toFixed(0)+'M',font:{size:10}},grid:{color:'#f3f4f6'}},
-    y:{ticks:{font:{size:11}},grid:{display:false}}
-  }}});
-
-  // 4. Saldo mensual
-  const ingR=[8169881,7883629,8784204,8247150,8420928,7278682,6788352];
-  const egrR=[7156068,9811058,10248988,8418485,8434769,8597480,8608519];
-  new Chart('f-saldo',{type:'line',data:{labels:meses,datasets:[{
-    label:'Saldo',data:ingR.map((v,i)=>v-egrR[i]),borderColor:C.purple,
-    backgroundColor:'rgba(124,58,237,.1)',fill:true,tension:.4,pointRadius:5,borderWidth:2.5
-  }]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.parsed.y)}}},
-    scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},
-            x:{ticks:{font:{size:11}},grid:{display:false}}}}});
-
-  // 5. Morosidad monto
-  new Chart('f-mor-monto',{type:'doughnut',data:{
-    labels:['1 Mes','2 Meses','3+ Meses'],
-    datasets:[{data:[731164,702799,762857],backgroundColor:[C.orange,C.red,'#7f1d1d'],hoverOffset:6,borderWidth:2}]
-  },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-    tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+fmt(ctx.parsed)}}}}});
-
-  // 6. Morosidad unidades
-  new Chart('f-mor-uni',{type:'bar',data:{
-    labels:['1 Mes','2 Meses','3+ Meses'],
-    datasets:[{data:[7,4,3],backgroundColor:[C.orange,C.red,'#7f1d1d'],borderRadius:6}]
-  },options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+ctx.parsed.y+' unidades'}}},
-    scales:{y:{ticks:{stepSize:1,font:{size:11}},grid:{color:'#f3f4f6'},beginAtZero:true},
-            x:{ticks:{font:{size:12}},grid:{display:false}}}}});
-
-  // 7. Composición ingresos
-  new Chart('f-comp-ing',{type:'bar',data:{
-    labels:['Recuperación GGCC','Fondo de Reserva 8%','Fondo Extra 8,9%'],
-    datasets:[
-      {label:'Presupuestado',data:[52210357,3489360,3881913],backgroundColor:C.blueFill,borderColor:C.blue,borderWidth:2,borderRadius:4},
-      {label:'Real',         data:[54774175,4445826,4945982],backgroundColor:C.green,borderRadius:4},
-    ]
-  },options:{...yMoney,scales:{
-    y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(0)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},
-    x:{ticks:{font:{size:10}},grid:{display:false}}
-  }}});
-
-  // 8. Balance
-  const bLabels=['Banco','Deuda 1-2m','Deuda 3+m','GG.CC. mes','Finiquito x pagar','Pagos anticipados','Servicios x pagar','Fondo Reserva','Capital'];
-  const bVals=[3070574,1433963,762857,8477077,-3220822,-1720563,-12193,961659,7829234];
-  new Chart('f-balance',{type:'bar',data:{labels:bLabels,datasets:[{
-    data:bVals,borderRadius:4,
-    backgroundColor:bVals.map(v=>v>=0?'rgba(37,99,235,.75)':'rgba(220,38,38,.75)')
-  }]},options:{indexAxis:'y',responsive:true,
-    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(Math.abs(ctx.parsed.x))+(ctx.parsed.x<0?' (obligación)':' (derecho)')}}},
-    scales:{x:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:10}},grid:{color:'#f3f4f6'}},
-            y:{ticks:{font:{size:10}},grid:{display:false}}}}});
-
-  // Tabla morosos
-  const morosos=[
-    {u:47,m:3,d:262034,c:true},{u:49,m:3,d:260491,c:true},{u:51,m:3,d:240332,c:true},
-    {u:4, m:2,d:350323,c:false},{u:21,m:2,d:352476,c:false},
-    {u:5, m:1,d:123324,c:false},{u:9, m:1,d:109222,c:false},{u:25,m:1,d:123324,c:false},
-    {u:34,m:1,d:123324,c:false},{u:46,m:1,d:5322,  c:false},{u:57,m:1,d:123324,c:false},{u:62,m:1,d:123324,c:false},
-  ];
-  const tbody=document.getElementById('t-morosos');
-  morosos.forEach(m=>{
-    const est=m.m>=3?'<span class="pill p-red">Crítico</span>':m.m===2?'<span class="pill p-orange">Urgente</span>':'<span class="pill p-yellow">Atención</span>';
-    const cor=m.c?'<span class="pill p-red">Sí ✂️</span>':'<span class="pill p-green">No</span>';
-    tbody.innerHTML+=`<tr><td><strong>Casa ${m.u}</strong></td><td>${m.m} ${m.m===1?'mes':'meses'}</td><td>${fmt(m.d)}</td><td>${cor}</td><td>${est}</td></tr>`;
-  });
-})();
-
-// ════════════════════════════════════════════════════════════
-// TAB TAREAS — inicializa al primer clic
-// ════════════════════════════════════════════════════════════
-function initTareas() {
-
-  // 1. Estado
-  new Chart('t-estado',{type:'doughnut',data:{
-    labels:['En proceso','En rev. permanente','En revisión','Cerrado','Pendiente'],
-    datasets:[{data:[15,12,5,7,2],backgroundColor:[C.blue,C.purple,C.orange,C.green,C.gray],hoverOffset:6,borderWidth:2}]
-  },options:noScale});
-
-  // 2. Área
-  new Chart('t-area',{type:'bar',data:{
-    labels:['Gestión Comunitaria','Seguridad','Aseo y Áreas Verdes','Gestión Laboral','Proyectos y Mejoras','Mantención e Infraest.','Protocolo y Com.','Financiero'],
-    datasets:[{data:[10,9,7,6,3,3,2,1],backgroundColor:C.teal,borderRadius:4}]
-  },options:hBar});
-
-  // 3. Responsable
-  new Chart('t-resp',{type:'bar',data:{
-    labels:['Ingrid Molgas','Terramack','Prevencionista','Comité','Círculo Ambiental','Luis Guzmán','Boss Seguridad'],
-    datasets:[{data:[26,6,3,2,2,1,1],backgroundColor:[C.red,C.orange,C.purple,C.blue,C.green,C.teal,C.gray],borderRadius:4}]
-  },options:hBar});
-
-  // 4. Prioridad
-  new Chart('t-prior',{type:'doughnut',data:{
-    labels:['Alta','Media','Baja'],
-    datasets:[{data:[35,5,1],backgroundColor:[C.red,C.orange,C.green],hoverOffset:6,borderWidth:2}]
-  },options:{...noScale,plugins:{...noScale.plugins,
-    tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+((ctx.parsed/41)*100).toFixed(0)+'%)'}}}
-  }});
-
-  // 5. Avance
-  new Chart('t-avance',{type:'doughnut',data:{
-    labels:['Abiertas','Cerradas'],
-    datasets:[{data:[34,7],backgroundColor:[C.orange,C.green],hoverOffset:6,borderWidth:2}]
-  },options:{...noScale,plugins:{...noScale.plugins,
-    tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+((ctx.parsed/41)*100).toFixed(0)+'%)'}}}
-  }});
-
-  // 6. Ingrid vs equipo
-  new Chart('t-ingrid',{type:'doughnut',data:{
-    labels:['Ingrid Molgas','Resto del equipo'],
-    datasets:[{data:[26,15],backgroundColor:[C.red,'#bfdbfe'],hoverOffset:6,borderWidth:2}]
-  },options:noScale});
-
-  // 7. Origen
-  new Chart('t-origen',{type:'doughnut',data:{
-    labels:['Informe de Gestión','WhatsApp','Comité'],
-    datasets:[{data:[35,5,1],backgroundColor:[C.blue,C.purple,C.teal],hoverOffset:6,borderWidth:2}]
-  },options:noScale});
-
-  // Tabla críticas
-  const criticas=[
-    {n:"Clave SII pendiente",e:"Pendiente",a:"Gestión Laboral",r:"Ingrid Molgas",v:"2026-06-20"},
-    {n:"Plan de Emergencia — 6 casas sin registro",e:"En proceso",a:"Gestión Comunitaria",r:"Ingrid Molgas",v:"2026-06-20"},
-    {n:"Socializar Plan de Emergencia",e:"En proceso",a:"Gestión Comunitaria",r:"Prevencionista",v:"2026-06-20"},
-    {n:"Adhesión Caja de Compensación",e:"En proceso",a:"Gestión Laboral",r:"Ingrid Molgas",v:"2026-06-20"},
-    {n:"Depositar Plan Emergencia (Carabineros/Bomberos)",e:"En proceso",a:"Gestión Comunitaria",r:"Prevencionista",v:"2026-04-10"},
-    {n:"Inscripción Reglamento en CBR Santiago",e:"En proceso",a:"Gestión Comunitaria",r:"Ingrid Molgas",v:"2026-04-10"},
-    {n:"Supervisar cumplimiento Reglamento",e:"En proceso",a:"Gestión Comunitaria",r:"Ingrid Molgas",v:"2026-04-10"},
-    {n:"Gestión cobranza morosos +2 meses",e:"En rev. permanente",a:"Gestión Comunitaria",r:"Ingrid Molgas",v:"2026-04-10"},
-    {n:"Finiquito Manuel Espinoza — 5 cuotas",e:"En proceso",a:"Gestión Laboral",r:"Ingrid Molgas",v:"2026-04-10"},
-    {n:"Comunicado extintores y sensores",e:"En proceso",a:"Seguridad",r:"Ingrid Molgas",v:"2026-04-10"},
-    {n:"Kits seguridad para residentes",e:"En proceso",a:"Seguridad",r:"Ingrid Molgas",v:"2026-06-10"},
-    {n:"Evaluación sistema acceso automatizado",e:"En revisión",a:"Proyectos y Mejoras",r:"Comité",v:"2026-04-10"},
-  ];
-  const hoy=new Date("2026-06-16");
-  const pMap={"En proceso":"p-blue","Pendiente":"p-yellow","En rev. permanente":"p-purple","En revisión":"p-orange","Cerrado":"p-green"};
-  const tcrit=document.getElementById('t-criticas');
-  criticas.forEach(t=>{
-    const venc=t.v&&new Date(t.v)<hoy;
-    tcrit.innerHTML+=`<tr><td>${t.n}</td><td><span class="pill ${pMap[t.e]||'p-gray'}">${t.e}</span></td><td>${t.a}</td><td>${t.r}</td><td style="color:${venc?'#dc2626':'#374151'};font-weight:${venc?700:400}">${t.v}${venc?' ⚠️':''}</td></tr>`;
-  });
-
-  // Tabla vencimientos junio
-  const junio=[
-    {n:"Cerrar sectores kits seguridad Torres",e:"En proceso",r:"Ingrid Molgas",v:"2026-06-17"},
-    {n:"Subir manual instalación cámaras a CF",e:"Pendiente",r:"Ingrid Molgas",v:"2026-06-17"},
-    {n:"Protocolo informes mensuales",e:"En proceso",r:"Ingrid Molgas",v:"2026-06-17"},
-    {n:"Kits seguridad para residentes",e:"En proceso",r:"Ingrid Molgas",v:"2026-06-10"},
-    {n:"Plan de Emergencia — incluir resumen encuesta",e:"En proceso",r:"Prevencionista",v:"2026-06-20"},
-    {n:"Socializar Plan de Emergencia",e:"En proceso",r:"Prevencionista",v:"2026-06-20"},
-    {n:"Clave SII pendiente",e:"Pendiente",r:"Ingrid Molgas",v:"2026-06-20"},
-    {n:"Adhesión Caja de Compensación",e:"En proceso",r:"Ingrid Molgas",v:"2026-06-20"},
-  ];
-  const tvenc=document.getElementById('t-venc');
-  junio.forEach(t=>{
-    const d=new Date(t.v); const pasado=d<hoy;
-    tvenc.innerHTML+=`<tr><td>${t.n}</td><td><span class="pill ${pMap[t.e]||'p-gray'}">${t.e}</span></td><td>${t.r}</td><td style="color:${pasado?'#dc2626':d<=new Date('2026-06-18')?'#d97706':'#374151'};font-weight:600">${t.v}${pasado?' ⚠️':''}</td></tr>`;
-  });
-}
+new Chart('f-saldo',{type:'line',data:{labels:mesesHist,datasets:[{
+  label:'Saldo',data:ingHist.map((v,i)=>v-egrHist[i]),borderColor:C.purple,
+  backgroundColor:'rgba(124,58,237,.1)',fill:true,tension:.4,pointRadius:5,borderWidth:2.5
+}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.parsed.y)}}},
+  scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},
+          x:{ticks:{font:{size:11}},grid:{display:false}}}}});
 </script>
 </body>
 </html>
