@@ -1,0 +1,36 @@
+name: Build Dashboard
+
+on:
+  push:
+    paths:
+      - 'data/historico.json'
+      - 'build_dashboard.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerar index.html
+        run: |
+          python3 build_dashboard.py \
+            --historico data/historico.json \
+            --tareas-embed-url "https://zenith-dawn-f07.notion.site/37f12135079f809e92b9e2e467d051fb?v=37f12135079f80488a17000c406a1a33&source=copy_link" \
+            --outdir .
+
+      - name: Commit index.html actualizado
+        run: |
+          git config user.name "dashboard-bot"
+          git config user.email "actions@github.com"
+          git add index.html
+          git diff --cached --quiet && echo "Sin cambios" || (git commit -m "Actualiza dashboard automaticamente [skip ci]" && git push)
