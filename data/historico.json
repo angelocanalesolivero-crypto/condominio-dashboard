@@ -78,12 +78,25 @@
     "egresos_real": 6822289,
     "saldo_banco": 4887413,
     "egresos_por_categoria": {
-      "A confirmar": 20000.0,
-      "Administración": 4731292.0,
-      "Aseo": 145718.0,
-      "Laboral": 1620940.0,
-      "Seguros": 46489.0,
-      "Servicios básicos": 257850.0
+      "A confirmar": 20000,
+      "Administración": 4731292,
+      "Aseo": 145718,
+      "Laboral": 1620940,
+      "Seguros": 46489,
+      "Servicios básicos": 257850
+    }
+  },
+  {
+    "anio": 2099,
+    "mes": 1,
+    "mes_label": "Ene 99",
+    "nombre_mes": "TestMonth",
+    "ingresos_real": 9999999,
+    "egresos_real": 1111111,
+    "saldo_banco": 1234567,
+    "egresos_por_categoria": {
+      "Administración": 500000,
+      "Aseo": 111111
     }
   }
 ]
