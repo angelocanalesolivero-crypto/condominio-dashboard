@@ -98,5 +98,18 @@
       "Administración": 500000,
       "Aseo": 111111
     }
+  },
+  {
+    "anio": 2099,
+    "mes": 2,
+    "mes_label": "Feb 99",
+    "nombre_mes": "TestMonth2",
+    "ingresos_real": 8888888,
+    "egresos_real": 3333333,
+    "saldo_banco": 2222222,
+    "egresos_por_categoria": {
+      "Administración": 700000,
+      "Aseo": 222000
+    }
   }
 ]
