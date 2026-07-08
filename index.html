@@ -58,7 +58,7 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
     <h1>🏘 Condominio Barrio Oriente I</h1>
     <div class="sub">Administración: Ingrid Molgas &nbsp;|&nbsp; Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</div>
   </div>
-  <div class="hdr-badge">📅 Junio 2026</div>
+  <div class="hdr-badge">📅 TestMonth 2099</div>
 </header>
 
 <div class="tabs">
@@ -68,17 +68,17 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
 
 <div id="panel-financiero" class="panel active">
 
-  <div class="sec">📊 Resumen Financiero — Junio 2026</div>
+  <div class="sec">📊 Resumen Financiero — TestMonth 2099</div>
   <div class="kpi-row">
-    <div class="kpi bl"><div class="kpi-lbl">Ingresos Recaudados</div><div class="kpi-val">$10.396.309</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
-    <div class="kpi rd"><div class="kpi-lbl">Total Egresos</div><div class="kpi-val">$6.822.289</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
-    <div class="kpi or"><div class="kpi-lbl">Saldo Banco</div><div class="kpi-val">$4.887.413</div><div class="kpi-note">Saldo bancario al cierre del mes</div></div>
-    <div class="kpi gr"><div class="kpi-lbl">Resultado del Mes</div><div class="kpi-val">$3.574.020</div><div class="kpi-note gr">Superávit del mes</div></div>
+    <div class="kpi bl"><div class="kpi-lbl">Ingresos Recaudados</div><div class="kpi-val">$9.999.999</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
+    <div class="kpi rd"><div class="kpi-lbl">Total Egresos</div><div class="kpi-val">$1.111.111</div><div class="kpi-note">Según cartola bancaria del mes</div></div>
+    <div class="kpi or"><div class="kpi-lbl">Saldo Banco</div><div class="kpi-val">$1.234.567</div><div class="kpi-note">Saldo bancario al cierre del mes</div></div>
+    <div class="kpi gr"><div class="kpi-lbl">Resultado del Mes</div><div class="kpi-val">$8.888.888</div><div class="kpi-note gr">Superávit del mes</div></div>
   </div>
 
   <div class="sec">💰 Análisis de Egresos</div>
   <div class="g2">
-    <div class="cb"><h3>Egresos por Categoría — Junio 2026</h3><p>Distribución del gasto del mes ($6.822.289)</p><canvas id="f-egr-cat"></canvas></div>
+    <div class="cb"><h3>Egresos por Categoría — TestMonth 2099</h3><p>Distribución del gasto del mes ($611.111)</p><canvas id="f-egr-cat"></canvas></div>
     <div class="cb"><h3>Ingresos vs Egresos — Histórico</h3><p>Evolución mensual real (cartola bancaria)</p><canvas id="f-ing-egr" style="max-height:300px"></canvas></div>
   </div>
   <div class="g2">
@@ -94,7 +94,7 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
   </div>
 </div><!-- /panel-tareas -->
 
-<footer>Dashboard Condominio Barrio Oriente I · Junio 2026 · Administración: Ingrid Molgas · Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</footer>
+<footer>Dashboard Condominio Barrio Oriente I · TestMonth 2099 · Administración: Ingrid Molgas · Comité: Tomas, Rodrigo, Angelo, Luis, Aldo</footer>
 </div><!-- /wrap -->
 
 <script>
@@ -111,15 +111,15 @@ const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
 const yMoney = {responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:ctx=>' '+fmt(ctx.parsed.y)}}},scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{size:11}},grid:{color:'#f3f4f6'}},x:{ticks:{font:{size:11}},grid:{display:false}}}};
 
 new Chart('f-egr-cat',{type:'doughnut',data:{
-  labels:["A confirmar", "Administración", "Aseo", "Laboral", "Seguros", "Servicios básicos"],
-  datasets:[{data:[20000.0, 4731292.0, 145718.0, 1620940.0, 46489.0, 257850.0],backgroundColor:["#2563eb", "#0891b2", "#d97706", "#7c3aed", "#16a34a", "#6b7280"],hoverOffset:6,borderWidth:2}]
+  labels:["Administración", "Aseo"],
+  datasets:[{data:[500000, 111111],backgroundColor:["#2563eb", "#0891b2"],hoverOffset:6,borderWidth:2}]
 },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-  tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+fmt(ctx.parsed)+' ('+(ctx.parsed/6822289.0*100).toFixed(1)+'%)'}}}
+  tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+fmt(ctx.parsed)+' ('+(ctx.parsed/611111*100).toFixed(1)+'%)'}}}
 }});
 
-const mesesHist = ["Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26", "May 26", "Jun 26"];
-const ingHist = [8169881, 7883629, 8784204, 8247150, 8420928, 7278682, 6788352, 10396309];
-const egrHist = [7156068, 9811058, 10248988, 8418485, 8434769, 8597480, 8608519, 6822289];
+const mesesHist = ["Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26", "May 26", "Jun 26", "Ene 99"];
+const ingHist = [8169881, 7883629, 8784204, 8247150, 8420928, 7278682, 6788352, 10396309, 9999999];
+const egrHist = [7156068, 9811058, 10248988, 8418485, 8434769, 8597480, 8608519, 6822289, 1111111];
 
 new Chart('f-ing-egr',{type:'bar',data:{labels:mesesHist,datasets:[
   {label:'Ingresos Real', data:ingHist,backgroundColor:C.blue,borderRadius:4},
