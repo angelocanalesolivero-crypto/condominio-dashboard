@@ -78,51 +78,12 @@
     "egresos_real": 6822289,
     "saldo_banco": 4887413,
     "egresos_por_categoria": {
-      "A confirmar": 20000,
-      "Administración": 4731292,
-      "Aseo": 145718,
-      "Laboral": 1620940,
-      "Seguros": 46489,
-      "Servicios básicos": 257850
-    }
-  },
-  {
-    "anio": 2099,
-    "mes": 1,
-    "mes_label": "Ene 99",
-    "nombre_mes": "TestMonth",
-    "ingresos_real": 9999999,
-    "egresos_real": 1111111,
-    "saldo_banco": 1234567,
-    "egresos_por_categoria": {
-      "Administración": 500000,
-      "Aseo": 111111
-    }
-  },
-  {
-    "anio": 2099,
-    "mes": 2,
-    "mes_label": "Feb 99",
-    "nombre_mes": "TestMonth2",
-    "ingresos_real": 8888888,
-    "egresos_real": 3333333,
-    "saldo_banco": 2222222,
-    "egresos_por_categoria": {
-      "Administración": 700000,
-      "Aseo": 222000
-    }
-  },
-  {
-    "anio": 2099,
-    "mes": 3,
-    "mes_label": "Mar 99",
-    "nombre_mes": "TestMonth3",
-    "ingresos_real": 7777777,
-    "egresos_real": 4444444,
-    "saldo_banco": 3333333,
-    "egresos_por_categoria": {
-      "Administración": 800000,
-      "Aseo": 333000
+      "A confirmar": 20000.0,
+      "Administración": 4731292.0,
+      "Aseo": 145718.0,
+      "Laboral": 1620940.0,
+      "Seguros": 46489.0,
+      "Servicios básicos": 257850.0
     }
   }
 ]
