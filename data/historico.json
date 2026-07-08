@@ -1,0 +1,89 @@
+[
+  {
+    "anio": 2025,
+    "mes": 11,
+    "mes_label": "Nov 25",
+    "nombre_mes": "Noviembre",
+    "ingresos_real": 8169881,
+    "egresos_real": 7156068,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2025,
+    "mes": 12,
+    "mes_label": "Dic 25",
+    "nombre_mes": "Diciembre",
+    "ingresos_real": 7883629,
+    "egresos_real": 9811058,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 1,
+    "mes_label": "Ene 26",
+    "nombre_mes": "Enero",
+    "ingresos_real": 8784204,
+    "egresos_real": 10248988,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 2,
+    "mes_label": "Feb 26",
+    "nombre_mes": "Febrero",
+    "ingresos_real": 8247150,
+    "egresos_real": 8418485,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 3,
+    "mes_label": "Mar 26",
+    "nombre_mes": "Marzo",
+    "ingresos_real": 8420928,
+    "egresos_real": 8434769,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 4,
+    "mes_label": "Abr 26",
+    "nombre_mes": "Abril",
+    "ingresos_real": 7278682,
+    "egresos_real": 8597480,
+    "saldo_banco": null,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 5,
+    "mes_label": "May 26",
+    "nombre_mes": "Mayo",
+    "ingresos_real": 6788352,
+    "egresos_real": 8608519,
+    "saldo_banco": 1313393,
+    "egresos_por_categoria": {}
+  },
+  {
+    "anio": 2026,
+    "mes": 6,
+    "mes_label": "Jun 26",
+    "nombre_mes": "Junio",
+    "ingresos_real": 10396309,
+    "egresos_real": 6822289,
+    "saldo_banco": 4887413,
+    "egresos_por_categoria": {
+      "A confirmar": 20000.0,
+      "Administración": 4731292.0,
+      "Aseo": 145718.0,
+      "Laboral": 1620940.0,
+      "Seguros": 46489.0,
+      "Servicios básicos": 257850.0
+    }
+  }
+]
