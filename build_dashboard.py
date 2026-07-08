@@ -195,7 +195,7 @@ footer{{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;paddin
 
 <div id="panel-tareas" class="panel">
   <div class="notion-embed">
-    <iframe src= {args.tareas_url}" loading="lazy"></iframe>
+    <iframe src="{args.tareas_url}" loading="lazy"></iframe>
     <div class="hint">Vista en vivo de la base de datos "Tareas y Acuerdos" en Notion — se actualiza automáticamente, sin depender de este dashboard.</div>
   </div>
 </div><!-- /panel-tareas -->
