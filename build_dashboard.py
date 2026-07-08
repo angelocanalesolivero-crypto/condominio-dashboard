@@ -214,11 +214,7 @@ function switchTab(name, btn) {{
 const C = {{blue:'#2563eb', green:'#16a34a', red:'#dc2626', purple:'#7c3aed', gray:'#9ca3af',
   blueFill:'rgba(37,99,235,.12)', redFill:'rgba(220,38,38,.12)'}};
 const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
-const yMoney = {{
-  responsive:true,
-  plugins:{{legend:{{position:'bottom',labels:{{boxWidth:12,font:{{size:11}}}}}},tooltip:{{callbacks:{{label:ctx=>' '+fmt(ctx.parsed.y)}}}}}}},
-  scales:{{y:{{ticks:{{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{{size:11}}}},grid:{{color:'#f3f4f6'}}}},x:{{ticks:{{font:{{size:11}}}},grid:{{display:false}}}}}
-}};
+const yMoney = {{responsive:true,plugins:{{legend:{{position:'bottom',labels:{{boxWidth:12,font:{{size:11}}}}}},tooltip:{{callbacks:{{label:ctx=>' '+fmt(ctx.parsed.y)}}}}}},scales:{{y:{{ticks:{{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{{size:11}}}},grid:{{color:'#f3f4f6'}}}},x:{{ticks:{{font:{{size:11}}}},grid:{{display:false}}}}}}}};
 
 new Chart('f-egr-cat',{{type:'doughnut',data:{{
   labels:{json.dumps(cat_labels, ensure_ascii=False)},
