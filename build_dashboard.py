@@ -81,6 +81,8 @@ def main():
     # en navegador). Lo eliminamos aqui para que el embed siempre cargue,
     # sin depender de que quien pegue la URL en build.yml se acuerde de limpiarla.
     args.tareas_url = args.tareas_url.replace("&source=copy_link", "").replace("?source=copy_link&", "?").replace("?source=copy_link", "")
+    if "/ebd/" not in args.tareas_url:
+        args.tareas_url = args.tareas_url.replace(".notion.site/", ".notion.site/ebd//")
 
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
