@@ -89,7 +89,7 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
 
 <div id="panel-tareas" class="panel">
 
-  <div class="sec">📋 Resumen de Tareas — actualizado 2026-07-09T16:30:00Z</div>
+  <div class="sec">📋 Resumen de Tareas — actualizado 2026-07-09T16:39:07Z</div>
   <div class="kpi-row">
     <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">51</div></div>
     <div class="kpi or"><div class="kpi-lbl">Abiertas</div><div class="kpi-val">24</div><div class="kpi-note">Pendiente / en proceso / en revisión</div></div>
@@ -147,14 +147,14 @@ new Chart('f-saldo',{type:'line',data:{labels:mesesHist,datasets:[{
           x:{ticks:{font:{size:11}},grid:{display:false}}}}});
 
 new Chart('t-estado',{type:'doughnut',data:{
-  labels:["Cerrado", "En revisión permanente", "Cancelado", "En proceso", "Pendiente"],
-  datasets:[{data:[23, 11, 4, 11, 2],backgroundColor:["#16a34a", "#db2777", "#dc2626", "#2563eb", "#d97706"],hoverOffset:6,borderWidth:2}]
+  labels:["Pendiente", "En proceso", "Cerrado", "En revisión permanente", "Cancelado"],
+  datasets:[{data:[2, 11, 23, 11, 4],backgroundColor:["#d97706", "#2563eb", "#16a34a", "#db2777", "#dc2626"],hoverOffset:6,borderWidth:2}]
 },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
   tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+(ctx.parsed/51*100).toFixed(1)+'%)'}}}
 }});
 
 new Chart('t-resp',{type:'bar',data:{
-  labels:["Ingrid Molgas", "Comité", "Prevencionista", "Boss Seguridad", "Círculo Ambiental", "Luis Guzmán", "Tomás Barriga"],
+  labels:["Ingrid Molgas", "Comité", "Prevencionista", "Tomás Barriga", "Círculo Ambiental", "Luis Guzmán", "Boss Seguridad"],
   datasets:[{label:'Tareas abiertas',data:[17, 1, 2, 1, 1, 1, 1],backgroundColor:'#2563eb',borderRadius:4}]
 },options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false}},
   scales:{x:{ticks:{stepSize:1,font:{size:11}},grid:{color:'#f3f4f6'}},y:{ticks:{font:{size:11}},grid:{display:false}}}}});
