@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Generador del Dashboard (index.html) - Condominio Barrio Oriente I (v2.0, Julio 2026).
+Generador del Dashboard (index.html) - Condominio Barrio Oriente I (v3.0, Julio 2026).
 
 Contexto: el Dashboard vive como un sitio estatico en GitHub Pages (repo
 condominio-dashboard) embebido en la pagina de Notion. Antes se armaba a mano una
@@ -16,11 +16,21 @@ Quien agrega el mes nuevo a data/historico.json es un paso separado (Make, Flujo
 a partir de resumen_final_<anio>_<mes>.json que produce el pipeline de conciliacion
 en Drive (ver agregar_mes_historico.py en Drive/Scripts).
 
+NOVEDAD v3.0: la pestana "Tareas y Acuerdos" ahora tambien muestra tarjetas KPI
+(total, abiertas, vencidas, cerradas) y dos graficos (por Estado, por Responsable)
+antes del embed en vivo de Notion. Estos KPIs se leen de data/tareas_kpis.json, un
+snapshot que otro flujo separado (Make, Flujo 9) recalcula periodicamente
+consultando la base de datos de Notion y sube al repo. Si ese archivo no existe
+(por ejemplo en un checkout limpio antes de que corra Flujo 9 por primera vez), el
+script simplemente omite la seccion de KPIs y deja el embed en vivo como unica
+fuente de la pestana, igual que en v2.0.
+
 ALCANCE (MVP, julio 2026): se automatiza solo lo que hoy tiene una fuente de datos
 real y confiable:
   - Ingresos Recaudados, Total Egresos, Saldo Banco, Resultado del Mes (KPIs)
   - Egresos por Categoria (grafico, del ultimo mes)
   - Ingresos vs Egresos historico y Saldo Mensual historico (tendencias)
+  - Tareas y Acuerdos: totales por Estado, vencidas, abiertas por Responsable
 
 Se dejan FUERA (hasta tener fuente de datos real):
   - Presupuesto vs Real (no existe input de presupuesto en el pipeline)
@@ -30,10 +40,6 @@ Se dejan FUERA (hasta tener fuente de datos real):
     corrido un ciclo real con esa hoja "Morosidad" generada; se debe incorporar
     aqui apenas exista un mes real con ese archivo)
 
-La pestana "Tareas y Acuerdos" deja de ser una foto fija con graficos Chart.js y
-pasa a ser un embed en vivo de la base de datos de Notion (publicada via
-"Publish to web"), para que se actualice sola sin depender de este script.
-
 Formato esperado de cada entrada en data/historico.json:
 {
   "anio": 2026, "mes": 6, "mes_label": "Jun 26", "nombre_mes": "Junio",
@@ -41,9 +47,18 @@ Formato esperado de cada entrada en data/historico.json:
   "egresos_por_categoria": {"Administración": 4731292.0, "Aseo": 145718.0, ...}
 }
 
+Formato esperado de data/tareas_kpis.json (opcional):
+{
+  "generated_at": "2026-07-09T16:30:00Z",
+  "total": 51, "abiertas": 24, "vencidas": 8,
+  "por_estado": {"Cerrado": 23, "En proceso": 11, ...},
+  "por_responsable": {"Ingrid Molgas": 17, "Comité": 1, ...}
+}
+
 Uso:
   python3 build_dashboard.py --historico data/historico.json \
     --tareas-embed-url https://zenith-dawn-f07.notion.site/... \
+    [--tareas-kpis data/tareas_kpis.json] \
     --outdir .
 """
 import argparse
@@ -53,6 +68,15 @@ from pathlib import Path
 ADMINISTRACION_DEFAULT = "Ingrid Molgas"
 COMITE_DEFAULT = "Tomas, Rodrigo, Angelo, Luis, Aldo"
 CAT_COLORS = ["#2563eb", "#0891b2", "#d97706", "#7c3aed", "#16a34a", "#6b7280", "#dc2626"]
+ESTADO_COLORS = {
+    "Pendiente": "#d97706",
+    "En proceso": "#2563eb",
+    "En revisión": "#8b5e3c",
+    "En revisión permanente": "#db2777",
+    "Cerrado": "#16a34a",
+    "Cancelado": "#dc2626",
+}
+ABIERTOS_ESTADOS = {"Pendiente", "En proceso", "En revisión", "En revisión permanente"}
 
 
 def money(v):
@@ -67,10 +91,19 @@ def load_json(path):
         return json.load(f)
 
 
+def try_load_json(path):
+    try:
+        return load_json(path)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return None
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--historico", required=True, help="data/historico.json (lista de meses, el ultimo es el actual)")
     p.add_argument("--tareas-embed-url", dest="tareas_url", required=True)
+    p.add_argument("--tareas-kpis", dest="tareas_kpis_path", default="data/tareas_kpis.json",
+                    help="Snapshot opcional de KPIs de Tareas y Acuerdos (ver formato en el docstring). Si no existe, se omite esa seccion.")
     p.add_argument("--administracion", default=ADMINISTRACION_DEFAULT)
     p.add_argument("--comite", default=COMITE_DEFAULT)
     p.add_argument("--outdir", default=".")
@@ -111,6 +144,54 @@ def main():
     cat_values = list(cat.values())
     cat_total = sum(cat_values) or 1
     cat_colors = (CAT_COLORS * (len(cat_labels) // len(CAT_COLORS) + 1))[:len(cat_labels)]
+
+    # --- Tareas y Acuerdos: KPIs opcionales (snapshot generado por Flujo 9 en Make) ---
+    tareas_kpis = try_load_json(args.tareas_kpis_path)
+    tareas_kpis_html = ""
+    tareas_kpis_js = ""
+    if tareas_kpis:
+        tk_total = tareas_kpis.get("total", 0)
+        tk_abiertas = tareas_kpis.get("abiertas", 0)
+        tk_vencidas = tareas_kpis.get("vencidas", 0)
+        tk_por_estado = tareas_kpis.get("por_estado", {})
+        tk_por_responsable = tareas_kpis.get("por_responsable", {})
+        tk_cerradas = tk_por_estado.get("Cerrado", 0)
+        tk_generated = tareas_kpis.get("generated_at", "")
+
+        tk_estado_labels = list(tk_por_estado.keys())
+        tk_estado_values = list(tk_por_estado.values())
+        tk_estado_colors = [ESTADO_COLORS.get(k, "#6b7280") for k in tk_estado_labels]
+
+        tk_resp_labels = list(tk_por_responsable.keys())
+        tk_resp_values = list(tk_por_responsable.values())
+
+        tareas_kpis_html = f"""
+  <div class="sec">📋 Resumen de Tareas{f' — actualizado {tk_generated}' if tk_generated else ''}</div>
+  <div class="kpi-row">
+    <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">{tk_total}</div></div>
+    <div class="kpi or"><div class="kpi-lbl">Abiertas</div><div class="kpi-val">{tk_abiertas}</div><div class="kpi-note">Pendiente / en proceso / en revisión</div></div>
+    <div class="kpi rd"><div class="kpi-lbl">Vencidas</div><div class="kpi-val">{tk_vencidas}</div><div class="kpi-note rd">Requieren atención</div></div>
+    <div class="kpi gr"><div class="kpi-lbl">Cerradas</div><div class="kpi-val">{tk_cerradas}</div></div>
+  </div>
+  <div class="g2">
+    <div class="cb"><h3>Tareas por Estado</h3><p>Distribución de todas las tareas registradas ({tk_total})</p><canvas id="t-estado"></canvas></div>
+    <div class="cb"><h3>Tareas Abiertas por Responsable</h3><p>Carga de trabajo activa ({tk_abiertas} tareas abiertas)</p><canvas id="t-resp" style="max-height:300px"></canvas></div>
+  </div>
+"""
+        tareas_kpis_js = f"""
+new Chart('t-estado',{{type:'doughnut',data:{{
+  labels:{json.dumps(tk_estado_labels, ensure_ascii=False)},
+  datasets:[{{data:{json.dumps(tk_estado_values)},backgroundColor:{json.dumps(tk_estado_colors)},hoverOffset:6,borderWidth:2}}]
+}},options:{{responsive:true,plugins:{{legend:{{position:'bottom',labels:{{boxWidth:12,font:{{size:11}}}}}},
+  tooltip:{{callbacks:{{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+(ctx.parsed/{tk_total or 1}*100).toFixed(1)+'%)'}}}}}}
+}}}});
+
+new Chart('t-resp',{{type:'bar',data:{{
+  labels:{json.dumps(tk_resp_labels, ensure_ascii=False)},
+  datasets:[{{label:'Tareas abiertas',data:{json.dumps(tk_resp_values)},backgroundColor:'#2563eb',borderRadius:4}}]
+}},options:{{indexAxis:'y',responsive:true,plugins:{{legend:{{display:false}}}},
+  scales:{{x:{{ticks:{{stepSize:1,font:{{size:11}}}},grid:{{color:'#f3f4f6'}}}},y:{{ticks:{{font:{{size:11}}}},grid:{{display:false}}}}}}}}}});
+"""
 
     html = f"""<!DOCTYPE html>
 <html lang="es">
@@ -202,6 +283,7 @@ footer{{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;paddin
 </div><!-- /panel-financiero -->
 
 <div id="panel-tareas" class="panel">
+{tareas_kpis_html}
   <div class="notion-embed">
     <iframe src="{args.tareas_url}" loading="lazy"></iframe>
     <div class="hint">Vista en vivo de la base de datos "Tareas y Acuerdos" en Notion — se actualiza automáticamente, sin depender de este dashboard.</div>
@@ -246,6 +328,7 @@ new Chart('f-saldo',{{type:'line',data:{{labels:mesesHist,datasets:[{{
 }}]}},options:{{responsive:true,plugins:{{legend:{{display:false}},tooltip:{{callbacks:{{label:ctx=>' '+fmt(ctx.parsed.y)}}}}}},
   scales:{{y:{{ticks:{{callback:v=>'$'+(v/1000000).toFixed(1)+'M',font:{{size:11}}}},grid:{{color:'#f3f4f6'}}}},
           x:{{ticks:{{font:{{size:11}}}},grid:{{display:false}}}}}}}}}});
+{tareas_kpis_js}
 </script>
 </body>
 </html>
@@ -255,6 +338,7 @@ new Chart('f-saldo',{{type:'line',data:{{labels:mesesHist,datasets:[{{
     out_path.write_text(html, encoding="utf-8")
     print(f"OK -> {out_path} ({len(html)} bytes)")
     print(f"historico: {len(historico)} meses (actual: {periodo_fin_label})")
+    print(f"tareas_kpis: {'encontrado' if tareas_kpis else 'no encontrado, seccion omitida'}")
 
 
 if __name__ == "__main__":
