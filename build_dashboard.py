@@ -76,6 +76,12 @@ def main():
     p.add_argument("--outdir", default=".")
     args = p.parse_args()
 
+    # Notion devuelve 503 de forma consistente cuando la URL publica incluye
+    # el parametro de tracking &source=copy_link (bug reproducido y confirmado
+    # en navegador). Lo eliminamos aqui para que el embed siempre cargue,
+    # sin depender de que quien pegue la URL en build.yml se acuerde de limpiarla.
+    args.tareas_url = args.tareas_url.replace("&source=copy_link", "").replace("?source=copy_link&", "?").replace("?source=copy_link", "")
+
     outdir = Path(args.outdir)
     outdir.mkdir(parents=True, exist_ok=True)
 
