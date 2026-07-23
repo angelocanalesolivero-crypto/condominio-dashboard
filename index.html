@@ -89,16 +89,16 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
 
 <div id="panel-tareas" class="panel">
 
-  <div class="sec">📋 Resumen de Tareas — actualizado 2026-07-23T12:00:24Z</div>
+  <div class="sec">📋 Resumen de Tareas — actualizado 2026-07-23T22:00:30Z</div>
   <div class="kpi-row">
-    <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">51</div></div>
-    <div class="kpi or"><div class="kpi-lbl">Abiertas</div><div class="kpi-val">22</div><div class="kpi-note">Pendiente / en proceso / en revisión</div></div>
+    <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">52</div></div>
+    <div class="kpi or"><div class="kpi-lbl">Abiertas</div><div class="kpi-val">23</div><div class="kpi-note">Pendiente / en proceso / en revisión</div></div>
     <div class="kpi rd"><div class="kpi-lbl">Vencidas</div><div class="kpi-val">15</div><div class="kpi-note rd">Requieren atención</div></div>
     <div class="kpi gr"><div class="kpi-lbl">Cerradas</div><div class="kpi-val">24</div></div>
   </div>
   <div class="g2">
-    <div class="cb"><h3>Tareas por Estado</h3><p>Distribución de todas las tareas registradas (51)</p><canvas id="t-estado"></canvas></div>
-    <div class="cb"><h3>Tareas Abiertas por Responsable</h3><p>Carga de trabajo activa (22 tareas abiertas)</p><canvas id="t-resp" style="max-height:300px"></canvas></div>
+    <div class="cb"><h3>Tareas por Estado</h3><p>Distribución de todas las tareas registradas (52)</p><canvas id="t-estado"></canvas></div>
+    <div class="cb"><h3>Tareas Abiertas por Responsable</h3><p>Carga de trabajo activa (23 tareas abiertas)</p><canvas id="t-resp" style="max-height:300px"></canvas></div>
   </div>
 
   <div class="notion-embed">
@@ -147,15 +147,15 @@ new Chart('f-saldo',{type:'line',data:{labels:mesesHist,datasets:[{
           x:{ticks:{font:{size:11}},grid:{display:false}}}}});
 
 new Chart('t-estado',{type:'doughnut',data:{
-  labels:["Cerrado", "En proceso", "Cancelado", "En revisión permanente"],
-  datasets:[{data:[24, 11, 5, 11],backgroundColor:["#16a34a", "#2563eb", "#dc2626", "#db2777"],hoverOffset:6,borderWidth:2}]
+  labels:["Pendiente", "Cerrado", "En proceso", "Cancelado", "En revisión permanente"],
+  datasets:[{data:[1, 24, 11, 5, 11],backgroundColor:["#d97706", "#16a34a", "#2563eb", "#dc2626", "#db2777"],hoverOffset:6,borderWidth:2}]
 },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
-  tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+(ctx.parsed/51*100).toFixed(1)+'%)'}}}
+  tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+(ctx.parsed/52*100).toFixed(1)+'%)'}}}
 }});
 
 new Chart('t-resp',{type:'bar',data:{
   labels:["Ingrid Molgas", "Comité", "Prevencionista", "Círculo Ambiental", "Luis Guzmán", "Boss Seguridad"],
-  datasets:[{label:'Tareas abiertas',data:[16, 1, 2, 1, 1, 1],backgroundColor:'#2563eb',borderRadius:4}]
+  datasets:[{label:'Tareas abiertas',data:[17, 1, 2, 1, 1, 1],backgroundColor:'#2563eb',borderRadius:4}]
 },options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false}},
   scales:{x:{ticks:{stepSize:1,font:{size:11}},grid:{color:'#f3f4f6'}},y:{ticks:{font:{size:11}},grid:{display:false}}}}});
 
