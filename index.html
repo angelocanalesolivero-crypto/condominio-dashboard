@@ -89,12 +89,12 @@ footer{text-align:center;font-size:12px;color:var(--gray);margin-top:8px;padding
 
 <div id="panel-tareas" class="panel">
 
-  <div class="sec">📋 Resumen de Tareas — actualizado 2026-10-05T11:00:58Z</div>
+  <div class="sec">📋 Resumen de Tareas — actualizado 2026-10-05T21:00:58Z</div>
   <div class="kpi-row">
     <div class="kpi bl"><div class="kpi-lbl">Total Tareas</div><div class="kpi-val">80</div></div>
     <div class="kpi or"><div class="kpi-lbl">Abiertas</div><div class="kpi-val">33</div><div class="kpi-note">Pendiente / en proceso / en revisión</div></div>
     <div class="kpi rd"><div class="kpi-lbl">Vencidas</div><div class="kpi-val">30</div><div class="kpi-note rd">Requieren atención</div></div>
-    <div class="kpi gr"><div class="kpi-lbl">Cerradas</div><div class="kpi-val">43</div></div>
+    <div class="kpi gr"><div class="kpi-lbl">Cerradas</div><div class="kpi-val">44</div></div>
   </div>
   <div class="g2">
     <div class="cb"><h3>Tareas por Estado</h3><p>Distribución de todas las tareas registradas (80)</p><canvas id="t-estado"></canvas></div>
@@ -148,7 +148,7 @@ new Chart('f-saldo',{type:'line',data:{labels:mesesHist,datasets:[{
 
 new Chart('t-estado',{type:'doughnut',data:{
   labels:["Pendiente", "Cerrado", "En proceso", "En revisión permanente", "Cancelado"],
-  datasets:[{data:[10, 43, 12, 11, 4],backgroundColor:["#d97706", "#16a34a", "#2563eb", "#db2777", "#dc2626"],hoverOffset:6,borderWidth:2}]
+  datasets:[{data:[10, 44, 12, 11, 3],backgroundColor:["#d97706", "#16a34a", "#2563eb", "#db2777", "#dc2626"],hoverOffset:6,borderWidth:2}]
 },options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},
   tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+ctx.parsed+' ('+(ctx.parsed/80*100).toFixed(1)+'%)'}}}
 }});
